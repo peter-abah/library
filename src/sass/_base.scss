@@ -1,0 +1,18 @@
+body {
+  font-family: Poppins, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--gray-bg);
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+button {
+  border: none;
+}
+
+input {
+  margin: 0;
+}
