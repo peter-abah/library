@@ -29,3 +29,16 @@
     color: var(--text-secondary);
   }
 }
+
+@media screen and (min-width: 48px) {
+  .header {
+    padding-left: 2rem;
+    padding-right: 3rem;
+  }
+
+  .add-book-btn {
+    &__icon {
+      font-size: 3rem;
+    }
+  }
+}

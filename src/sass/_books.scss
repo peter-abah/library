@@ -1,10 +1,11 @@
+$book__img-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
 .books {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
 
   width: fit-content;
-  padding: 0 .625rem;
   margin: 6rem auto;
 }
 
@@ -15,7 +16,9 @@
   width: 100%;
   max-width: 22.5rem;
   min-height: 10.75rem;
+  padding: 1rem;
 
+  border-bottom: 4px solid var(--secondary);
   border-radius: 4px;
   background-color: var(--primary);
   color: var(--text-primary);
@@ -24,15 +27,15 @@
     width: 35%;
     height: auto;
     object-fit: cover;
-    border-radius: 4px 0 0 4px;
+    border-radius: 4px;
+    box-shadow: $book__img-shadow;
   }
 
   &__info {
     flex-grow: 1;
     max-width: 70%;
-    padding: 1rem 2rem 1rem .75rem;
+    padding: .5rem 2rem 1rem .75rem;
     background-color: var(--primary);
-    border-radius: 0 4px 4px 0;
   }
 
   &__title {
@@ -57,7 +60,7 @@
   &__delete-btn {
     position: absolute;
     right: .5rem;
-    top: 1rem;
+    top: 1.5rem;
 
     background-color: transparent;
     color: var(--text-primary);
@@ -66,6 +69,13 @@
 
 @media screen and (min-width: 48rem) {
   .books {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 72rem) {
+  .books {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
