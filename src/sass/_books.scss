@@ -1,9 +1,11 @@
 .books {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
   width: fit-content;
   padding: 0 .625rem;
-  margin: 5rem auto;
+  margin: 6rem auto;
 }
 
 .book {
@@ -13,7 +15,6 @@
   width: 100%;
   max-width: 22.5rem;
   min-height: 10.75rem;
-  margin: .625rem auto;
 
   border-radius: 4px;
   background-color: var(--primary);
@@ -60,5 +61,11 @@
 
     background-color: transparent;
     color: var(--text-primary);
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .books {
+    grid-template-columns: 1fr 1fr;
   }
 }
