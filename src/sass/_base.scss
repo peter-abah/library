@@ -3,10 +3,13 @@ body {
   color: var(--text-primary);
   background-color: var(--gray-bg);
   box-sizing: border-box;
+  line-height: 1.3;
 }
 
 * {
   box-sizing: inherit;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 button {
