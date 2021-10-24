@@ -139,31 +139,45 @@
   </main>
 
   <div class="modal">
-    <h2 class="modal__title">Add Book</h2>
+    <div class="modal__content">
+      <h2 class="modal__title">Add Book</h2>
 
-    <form action="" class="modal__form">
-      <div class="modal__form__field">
-        <label class="modal__form__label" for="title">Title</label>
-        <input class="modal__form__input-text" id="title" type="text">
-      </div>
+      <form action="" class="modal__form">
+        <div class="modal__form__field">
+          <label class="modal__form__label" for="title">Title</label>
+          <input class="modal__form__input--text" id="title" type="text">
+        </div>
 
-      <div class="modal__form__field">
-        <label class="modal__form__label" for="author">Author</label>
-        <input class="modal__form__input-text" id="author" type="text">
-      </div>
+        <div class="modal__form__field">
+          <label class="modal__form__label" for="author">Author</label>
+          <input class="modal__form__input--text" id="author" type="text">
+        </div>
 
-      <div class="modal__form__field">
-        <label class="modal__form__label" for="page-no">Number of Pages</label>
-        <input class="modal__form__input-number" id="page-no" type="number">
-      </div>
+        <div class="modal__form__field">
+          <label class="modal__form__label" for="page-no">Number of Pages</label>
+          <input class="modal__form__input--text" id="page-no" type="number">
+        </div>
 
-      <div class="modal__form__field">
-        <input class="modal__form__input=text" id="status" type="text">
-        <label class="modal__form__label" for="for status">Read</label>
-      </div>
+        <div class="modal__form__field">
+          <input class="modal__form__input--check" id="status" type="checkbox">
+          <label class="modal__form__label" for="for status">Read</label>
+        </div>
 
-      <button class="modal__form__btn" type="submit">Add</button>
-    </form>
+        <div class="modal__form__field">
+          <label class="modal__form__label" for="book-img-url">Cover Image URL</label>
+          <input class="modal__form__input--text" id="book-img-url" type="url">
+        </div>
+
+        <div class="modal__form__field">
+          <label for="book-img" class="modal__form__label">Or Upload File:</label>
+          <input class="modal__form__input--file" id="book-img" type="file">
+        </div>
+
+        <button class="modal__form__btn" type="button">Add</button>
+      </form>
+
+      <button class="modal__close-btn" type="button"><span class="material-icons">close</span></button>
+    </div>
   </div>
 
   <footer class="footer">

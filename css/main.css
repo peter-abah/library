@@ -107,7 +107,7 @@ a {
   color: var(--text-secondary);
 }
 
-@media screen and (min-width: 48px) {
+@media screen and (min-width: 48rem) {
   .header {
     padding-left: 2rem;
     padding-right: 3rem;
@@ -187,6 +187,70 @@ a {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(21, 21, 21, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+}
+.modal__content {
+  position: relative;
+  max-width: 30rem;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--secondary);
+  color: var(--text-secondary);
+}
+.modal__title {
+  font-size: 1.25rem;
+  margin-bottom: 1.125rem;
+}
+.modal__close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: transparent;
+  color: var(--text-secondary);
+}
+.modal__form__field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.modal__form__input--text {
+  flex-grow: 1;
+  margin-left: 0.5rem;
+  border: none;
+  border-bottom: 2px solid var(--text-secondary);
+  background-color: transparent;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+.modal__form__input--check {
+  margin-right: 0.5rem;
+}
+.modal__form__input--file {
+  margin-left: 0.5rem;
+}
+.modal__form__btn {
+  display: block;
+  margin-left: auto;
+  padding: 0.25rem 0.5rem;
+  color: var(--secondary);
+  background: var(--text-secondary);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 0.625rem;
+  font-family: "Poppins";
+}
+
 .footer {
   padding: 1rem;
   background-color: var(--secondary);
