@@ -12,6 +12,10 @@
   align-items: center;
   padding: 0 1rem;
 
+  &--hidden {
+    display: none;
+  }
+
   &__content {
     position: relative;
     max-width: 30rem;

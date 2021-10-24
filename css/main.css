@@ -95,14 +95,14 @@ a {
   font-size: 2rem;
 }
 
-.add-book-btn {
+.open-modal-btn {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   background-color: var(--secondary);
 }
-.add-book-btn__icon {
+.open-modal-btn__icon {
   font-size: 2.5rem;
   color: var(--text-secondary);
 }
@@ -199,6 +199,9 @@ a {
   justify-content: center;
   align-items: center;
   padding: 0 1rem;
+}
+.modal--hidden {
+  display: none;
 }
 .modal__content {
   position: relative;
