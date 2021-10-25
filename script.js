@@ -145,7 +145,7 @@ const createBookElement = function(book, booksCount) {
 
   let deleteBookBtn = createElement(
     'button', {class: 'book__delete-btn', 'data-book-id': booksCount}, [
-      createElement('span', {class: 'material-icons'}, [
+      createElement('span', {class: 'material-icons', title: 'Delete Book'}, [
         document.createTextNode('delete')
       ])
     ]
