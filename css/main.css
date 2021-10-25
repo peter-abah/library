@@ -65,10 +65,14 @@ body {
   box-sizing: inherit;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  transition: all 150ms ease-out;
 }
 
 button {
   border: none;
+}
+button:hover {
+  transform: scale(1.2);
 }
 
 input {
@@ -117,10 +121,7 @@ button {
   font-size: 2.5rem;
 }
 .header__btn__icon--hidden {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
+  display: none;
 }
 
 @media screen and (min-width: 48rem) {
@@ -217,7 +218,8 @@ button {
   padding: 0 1rem;
 }
 .modal--hidden {
-  display: none;
+  top: -120%;
+  overflow: hidden;
 }
 .modal__content {
   position: relative;
@@ -275,10 +277,13 @@ button {
   background-color: var(--secondary);
   color: var(--text-secondary);
 }
-.footer__contact {
+.footer__text {
   text-align: center;
+  margin-bottom: 0.5rem;
 }
-.footer__link {
+.footer__text--attribution {
+  font-size: 0.75rem;
+}
+.footer__link:hover {
   text-decoration: none;
-  font-weight: 600;
 }

@@ -13,7 +13,8 @@
   padding: 0 1rem;
 
   &--hidden {
-    display: none;
+    top: -120%;
+    overflow: hidden;
   }
 
   &__content {

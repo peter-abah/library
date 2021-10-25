@@ -132,7 +132,10 @@ const createBookElement = function(book, booksCount) {
   });
 
   // event listener to change book status
-  checkBox.addEventListener('change', event => book.status = checkBox.checked );
+  checkBox.addEventListener('change', event => {
+    book.status = checkBox.checked;
+    updateLocalStorage(books);
+  });
     
   let statusLabel = createElement('label', {}, [document.createTextNode(' Read')]);
 
