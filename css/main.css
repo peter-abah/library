@@ -33,7 +33,7 @@ table {
   border-spacing: 0;
 }
 
-[theme=light] {
+.light-theme {
   --primary: #fafafa;
   --secondary: #062726;
   --text-primary: #212121;
@@ -41,7 +41,7 @@ table {
   --text-gray: #bdbdbd;
 }
 
-[theme=dark] {
+.dark-theme {
   --primary: #111;
   --secondary: #062726;
   --text-primary: #eee;
@@ -79,6 +79,10 @@ a {
   color: currentColor;
 }
 
+button {
+  cursor: pointer;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -94,17 +98,29 @@ a {
 .header__title {
   font-size: 2rem;
 }
-
-.open-modal-btn {
+.header__btns {
+  display: flex;
+}
+.header__btn {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: 1rem;
   border-radius: 50%;
   background-color: var(--secondary);
 }
-.open-modal-btn__icon {
-  font-size: 2.5rem;
+.header__btn__icon {
   color: var(--text-secondary);
+}
+.header__btn__icon--big {
+  font-size: 2.5rem;
+}
+.header__btn__icon--hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
 }
 
 @media screen and (min-width: 48rem) {

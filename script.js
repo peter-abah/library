@@ -1,9 +1,27 @@
 'use strict';
 
+// ------------------
+// THEME SECTION
+// ------------------
+
+const bodyElement = document.querySelector('body')
+const themeToggleBtn = document.querySelector('#theme-toggle-btn');
+themeToggleBtn.addEventListener('click', event => {
+  [...themeToggleBtn.children].forEach(icon => 
+    icon.classList.toggle('header__btn__icon--hidden')
+  );
+
+  ['dark-theme', 'light-theme'].forEach(cls => bodyElement.classList.toggle(cls));
+});
+
+// -----------------
+// BOOKS SECTION
+// ----------------- 
+
 // keeps track of the number of books
 let booksCount = 0;
 
-// book object constuctot
+// book object constuctor
 const Book = function(title, author, pageNo, img, status) {
   this.title = title;
   this.author = author;
@@ -13,30 +31,66 @@ const Book = function(title, author, pageNo, img, status) {
   booksCount++;
 };
 
+// returns an object with default books
+const getDefaultBooks = function() {
+  let books = {};
+
+  books[booksCount] = new Book('Geometry for Ocelots', 'Exurb1a', 521, 'images/geometry.webp', false);
+  books[booksCount] = new Book('Eloquent JavaScript', 'Marijn Haverbeke', 382, 'images/eloquent-js.webp', true);
+  books[booksCount] = new Book('The Subtle Art of not Giving a F*ck', 'Mark Manson', 290, 'images/subtle-fuck.webp', true);
+  books[booksCount] = new Book('Stories of Your Life and Others', 'Ted Chiang', 402, 'images/stories-life.webp', false);
+
+  return books;
+};
+
+// returns books from local storage if it exists
+const getBooksFromStorage = function() {
+  return JSON.parse(window.localStorage.getItem('books'));
+}
+
+const books = getBooksFromStorage() || getDefaultBooks();
+
+const booksWrapper = document.querySelector('.books');
+const modal = document.querySelector('.modal')
+const openModalBtn = document.querySelector('#open-modal-btn');
+const closeModalBtn = document.querySelector('.modal__close-btn');
+
+const deleteBookBtns = [...document.querySelectorAll('.book__delete-btn')];
+const bookForm = document.querySelector('.modal__form');
+
+// delete books from books object and DOM
 const deleteBook = function(event) {
   let bookId = event.currentTarget.getAttribute('data-book-id');
   delete books[bookId];
 
   let bookElement = document.querySelector(`.book[data-book-id="${bookId}"]`);
   booksWrapper.removeChild(bookElement);
+  updateLocalStorage(books)
 };
 
 // adds book to dom
 const addBook = function(event) {
+  event.preventDefault();
+
+  const book = new Book(...getBookInfoFromForm());
+  books[booksCount] = book;
+  booksWrapper.appendChild(createBookElement(book, booksCount));
+
+  bookForm.reset();
+  modal.classList.toggle('modal--hidden')
+  updateLocalStorage(books)
+};
+
+// returns an array of book info from submitted form
+const getBookInfoFromForm = function() {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
   const pageNo = document.getElementById('page-no').checked;
   const img = getBookImage()
   const status = document.getElementById('status').value;
 
-  const book = new Book(title, author, pageNo, img, status);
-  books[booksCount] = book;
-  booksWrapper.appendChild(createBookElement(book, booksCount));
-
-  bookForm.reset();
-  modal.classList.toggle('modal--hidden')
-  event.preventDefault();
-};
+  return [title, author, pageNo, img, status];
+}
 
 // gets book url or default url
 const getBookImage = function() {
@@ -56,8 +110,8 @@ const createBookElement = function(book, booksCount) {
     class: 'book__img',
     src: book.img,
     alt: book.title,
-    width: 100,
-    height: 150,
+    width: 120,
+    height: 172,
   });
 
   let bookTitle = createElement(
@@ -77,6 +131,7 @@ const createBookElement = function(book, booksCount) {
     type: 'checkbox', checked: book.status, 'data-book-id': booksCount
   });
 
+  // event listener to change book status
   checkBox.addEventListener('change', event => book.status = checkBox.checked );
     
   let statusLabel = createElement('label', {}, [document.createTextNode(' Read')]);
@@ -112,7 +167,8 @@ const createElement =  function(tagName, properties = {}, children = []) {
   let element = document.createElement(tagName);
 
   for(let property of Object.keys(properties)) {
-    element.setAttribute(property, properties[property]);
+    // set the attribute of element unlesss the value is falsey
+    properties[property] && element.setAttribute(property, properties[property]);
   }
 
   for(let child of children) {
@@ -122,16 +178,18 @@ const createElement =  function(tagName, properties = {}, children = []) {
   return element;
 };
 
-const books = {};
-const booksWrapper = document.querySelector('.books');
+// updates local storage with books object
+const updateLocalStorage = function(books) {
+  window.localStorage.setItem('books', JSON.stringify(books));
+  console.log(window.localStorage)
+}
 
-const modal = document.querySelector('.modal')
-const openModalBtn = document.querySelector('.open-modal-btn');
-const closeModalBtn = document.querySelector('.modal__close-btn');
-
-const deleteBookBtns = [...document.querySelectorAll('.book__delete-btn')];
-const bookForm = document.querySelector('.modal__form');
-const addBookBtn = document.querySelector('modal__form__btn');
+// add books in books object to DOM
+const addBooksToDom = function(books) {
+  for(let bookId of Object.keys(books)) {
+    booksWrapper.appendChild(createBookElement(books[bookId], bookId));
+  }
+};
 
 // add event listener to toggle modal visibility
 [openModalBtn, closeModalBtn].forEach(btn => {
@@ -140,3 +198,5 @@ const addBookBtn = document.querySelector('modal__form__btn');
 
 // add event listener to add book
 bookForm.addEventListener('submit', addBook);
+
+addBooksToDom(books);

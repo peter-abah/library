@@ -1,4 +1,4 @@
-[theme="light"] {
+.light-theme {
   --primary: #fafafa;
   --secondary: #062726;
   --text-primary: #212121;
@@ -6,7 +6,7 @@
   --text-gray: #bdbdbd;
 }
 
-[theme="dark"] {
+.dark-theme {
   --primary: #111;
   --secondary: #062726;
   --text-primary: #eee;

@@ -14,19 +14,35 @@
   &__title {
     font-size: 2rem;
   }
-}
 
-.open-modal-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  &__btns {
+    display: flex;
+  }
 
-  border-radius: 50%;
-  background-color: var(--secondary);
+  &__btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
 
-  &__icon {
-    font-size: 2.5rem;
-    color: var(--text-secondary);
+    border-radius: 50%;
+    background-color: var(--secondary);
+
+      &__icon {
+        color: var(--text-secondary);
+
+        &--big {
+          font-size: 2.5rem;
+        }
+
+        &--hidden {
+          position: absolute;
+          top: 0;
+          left: 0;
+          opacity: 0;
+        }
+      }
   }
 }
 

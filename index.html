@@ -14,12 +14,18 @@
   <title>Library</title>
 </head>
 
-<body theme="dark">
+<body class="dark-theme">
   <header class="header">
     <h1 class="header__title">Library</h1>
-    <button class="open-modal-btn">
-      <span class="material-icons open-modal-btn__icon">add_circle_outline</span>
+    <div class="header__btns">
+      <button class="header__btn" id="theme-toggle-btn">
+        <span class="material-icons header__btn__icon header__btn__icon--hidden">dark_mode</span>
+        <span class="material-icons header__btn__icon">light_mode</span>
+      </button>
+      <button class="header__btn" id="open-modal-btn">
+      <span class="material-icons header__btn__icon header__btn__icon--big">add_circle_outline</span>
     </button>
+    </div>
   </header>
 
   <main class="books">
@@ -60,7 +66,7 @@
           <input class="modal__form__input--file" id="book-img" type="file">
         </div>
 
-        <button class="modal__form__btn" type="submit">Add</button>
+        <button class="modal__form__btn" type="submit">Add Book</button>
       </form>
 
       <button class="modal__close-btn" type="button"><span class="material-icons">close</span></button>
