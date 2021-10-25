@@ -128,8 +128,9 @@ const createBookElement = function(book, booksCount) {
 
 
   let checkBox = createElement('input', {
-    type: 'checkbox', checked: book.status, 'data-book-id': booksCount
+    type: 'checkbox', checked: book.status, 'data-book-id': booksCount, id: `checkBox-${booksCount}`
   });
+  
 
   // event listener to change book status
   checkBox.addEventListener('change', event => {
@@ -137,7 +138,7 @@ const createBookElement = function(book, booksCount) {
     updateLocalStorage(books);
   });
     
-  let statusLabel = createElement('label', {}, [document.createTextNode(' Read')]);
+  let statusLabel = createElement('label', {for: `checkBox-${booksCount}`}, [document.createTextNode(' Read')]);
 
   let bookStatus = createElement(
     'div', {class: 'book__status'}, [checkBox, statusLabel]
