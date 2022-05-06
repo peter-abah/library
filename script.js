@@ -85,9 +85,9 @@ const addBook = function(event) {
 const getBookInfoFromForm = function() {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
-  const pageNo = document.getElementById('page-no').checked;
+  const pageNo = document.getElementById('page-no').value;
   const img = getBookImage()
-  const status = document.getElementById('status').value;
+  const status = document.getElementById('status').checked;
 
   return [title, author, pageNo, img, status];
 }
